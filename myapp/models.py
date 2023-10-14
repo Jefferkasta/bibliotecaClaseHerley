@@ -1,10 +1,15 @@
 from django.db import models
 
 # Create your models here.
-class Project(models.Model):
-    name = models.CharField(max_length=200)
-    
-class Task(models.Model):
-    title = models.CharField(max_length=200)
-    descripcion = models.TextField()
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+class Libro(models.Model):
+    id = models.AutoField(primary_key=True)
+    titulo = models.CharField(max_length=100, verbose_name="Titulo")
+    imagen = models.ImageField(upload_to='imagenes/',verbose_name="Imagen",null=True)
+    descripcion= models.TextField(verbose_name="Descripcion",null=True)
+
+def __str__(self):
+    filla = f"TItulo: {self.titulo} - Descripcion: {self.descripcion}"
+    return fila
+
+def delete(self, using=None, keep_parents=False):
+    super().delete()

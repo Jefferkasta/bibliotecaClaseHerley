@@ -1,7 +1,7 @@
 
 from django.http import HttpResponse
 from django.shortcuts import render
-
+from .models import Libro 
 
 # Create your views here.
 #def index(request): #MELO
@@ -22,3 +22,8 @@ def index(request):
 
 def editar(request):
     return render(request,'templates/paginas/editar.html')
+
+def listar(request):
+    libros = Libro.objets.all()
+    
+    return render(request, "libros/index.html", {'libros':libros})
